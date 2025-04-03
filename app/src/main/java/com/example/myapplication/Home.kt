@@ -112,6 +112,7 @@ fun NaviScreen() {
             }
             when (navi) {
                 0 -> {
+                    HomeScreen("compotitor99,")
                 }
 
                 1 -> {
@@ -712,4 +713,36 @@ fun Card1(
     }
 }
 
+@Composable
+fun BmiGradientBar(bmi: Float) {
+    val gradientColors = listOf(Color.Blue, Color.Green, Color.Yellow, Color.Red)
+
+    Box {
+        Box(
+            modifier = Modifier
+                .width(250.dp)
+                .height(10.dp)
+                .background(
+                    brush = Brush.horizontalGradient(gradientColors),
+                    shape = RoundedCornerShape(16.dp)
+                )
+        ) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .offset(x = (bmi / 60f) * 220.dp)
+                    .width(1.dp)
+                    .height(10.dp)
+                    .background(Color.White),
+            )
+        }
+        Text(
+            bmi.toString(),
+            Modifier
+                .offset(y = (5).dp, x = (bmi / 60f) * 220.dp - 15.dp)
+                .zIndex(1f),
+            color = Color.White
+        )
+    }
+}
 
