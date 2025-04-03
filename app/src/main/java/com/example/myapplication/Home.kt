@@ -691,5 +691,25 @@ fun HomeScreen(name: String) {
     }
 }
 
+@Composable
+fun Card1(
+    text: String,
+    slot: @Composable RowScope.() -> Unit,
+) {
+    Column(Modifier.fillMaxWidth()) {
+        Text(text, color = Color.Black)
+        Spacer(Modifier.height(12.dp))
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .background(Color.Gray.copy(alpha = 0.4f), shape = RoundedCornerShape(16.dp))
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            slot()
+        }
+    }
+}
 
 
