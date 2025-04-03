@@ -116,6 +116,7 @@ fun NaviScreen() {
                 }
 
                 1 -> {
+                    AlarmScreen(alarmPopUP)
                 }
 
                 2 -> {
@@ -689,6 +690,68 @@ fun HomeScreen(name: String) {
             startInt = selectedAlarm,
             onSaveClick = { },
         )
+    }
+}
+
+@Composable
+fun AlarmScreen(onFloatClick: MutableState<Boolean>) {
+    val list = listOf("","")
+
+    if (onFloatClick.value) {
+        AlarmPopUp(
+            toggleIsOpen = { onFloatClick.value = it },
+            startInt = 3,
+            onSaveClick = { },
+        )
+    }
+    Column(
+        Modifier
+            .verticalScroll(rememberScrollState())
+            .padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Text("Ararms", color = Color.Black)
+        Spacer(Modifier.height(12.dp))
+        list.forEach { _ ->
+            val h = 12
+            val m = 30
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .background(
+                        Color.Gray.copy(alpha = 0.3f),
+                        shape = RoundedCornerShape(16.dp)
+                    )
+                    .padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .size(50.dp)
+                            .background(
+                                Color.White,
+                                RoundedCornerShape(50.dp)
+                            )
+                            .clip(CircleShape)
+                    ) {
+                        Icon(
+                            modifier = Modifier.size(25.dp),
+                            painter = painterResource(R.drawable.food_dinner_svgrepo_com),
+                            contentDescription = null
+                        )
+                    }
+                    Spacer(Modifier.width(24.dp))
+                    Text("$h : $m")
+
+
+                }
+                Switch(checked = false, onCheckedChange = { })
+            }
+        }
     }
 }
 
