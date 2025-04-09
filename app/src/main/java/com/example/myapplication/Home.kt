@@ -695,7 +695,7 @@ fun HomeScreen(name: String) {
 
 @Composable
 fun AlarmScreen(onFloatClick: MutableState<Boolean>) {
-    val list = listOf("","")
+    val list = listOf("", "")
 
     if (onFloatClick.value) {
         AlarmPopUp(
@@ -824,163 +824,162 @@ fun AlarmPopUp(
         onDismissRequest = { toggleIsOpen(false) },
     ) {
 
-            Column(
-                Modifier
-                    .padding(12.dp)
-                    .background(Color.White, RoundedCornerShape(16.dp))
-                    .padding(12.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+        Column(
+            Modifier
+                .padding(12.dp)
+                .background(Color.White, RoundedCornerShape(16.dp))
+                .padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text("Add alarm")
+            Spacer(Modifier.height(4.dp))
+            Row(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Text("Add alarm")
-                Spacer(Modifier.height(4.dp))
-                Row(
-                    Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .clickable { alarm = if (alarm == 1) 0 else 1 }
+                        .size(50.dp)
+                        .background(
+                            if (alarm == 1) Color.Black else Color.White,
+                            RoundedCornerShape(50.dp)
+                        )
+                        .border(
+                            color = if (alarm == 1) Color.Black else Color.Gray,
+                            width = 1.dp,
+                            shape = RoundedCornerShape(50.dp)
+                        )
+                        .clip(CircleShape)
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .clickable { alarm = if (alarm == 1) 0 else 1 }
-                            .size(50.dp)
-                            .background(
-                                if (alarm == 1) Color.Black else Color.White,
-                                RoundedCornerShape(50.dp)
-                            )
-                            .border(
-                                color = if (alarm == 1) Color.Black else Color.Gray,
-                                width = 1.dp,
-                                shape = RoundedCornerShape(50.dp)
-                            )
-                            .clip(CircleShape)
-                    ) {
-                        Icon(
-                            modifier = Modifier.size(25.dp),
-                            tint = if (alarm == 1) Color.White else Color.Gray,
-                            painter = painterResource(R.drawable.food_dinner_svgrepo_com),
-                            contentDescription = null
-                        )
-                    }
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .clickable { alarm = if (alarm == 2) 0 else 2 }
-                            .size(50.dp)
-                            .background(
-                                if (alarm == 2) Color.Black else Color.White,
-                                RoundedCornerShape(50.dp)
-                            )
-                            .border(
-                                color = if (alarm == 2) Color.Black else Color.Gray,
-                                width = 1.dp,
-                                shape = RoundedCornerShape(50.dp)
-                            )
-                            .clip(CircleShape)
-                    ) {
-                        Icon(
-                            modifier = Modifier.size(25.dp),
-                            tint = if (alarm == 2) Color.White else Color.Gray,
-                            painter = painterResource(R.drawable.water_drop_fill0_wght400_grad0_opsz24),
-                            contentDescription = null
-                        )
-                    }
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier
-                            .clickable { alarm = if (alarm == 3) 0 else 3 }
-                            .size(50.dp)
-                            .background(
-                                if (alarm == 3) Color.Black else Color.White,
-                                RoundedCornerShape(50.dp)
-                            )
-                            .border(
-                                color = if (alarm == 3) Color.Black else Color.Gray,
-                                width = 1.dp,
-                                shape = RoundedCornerShape(50.dp)
-                            )
-                            .clip(CircleShape)
-                    ) {
-                        Icon(
-                            modifier = Modifier
-                                .size(25.dp)
-                                .offset(x = 5.dp),
-                            tint = if (alarm == 3) Color.White else Color.Gray,
-                            painter = painterResource(R.drawable.etc_svgrepo_com),
-                            contentDescription = null
-                        )
-                    }
+                    Icon(
+                        modifier = Modifier.size(25.dp),
+                        tint = if (alarm == 1) Color.White else Color.Gray,
+                        painter = painterResource(R.drawable.food_dinner_svgrepo_com),
+                        contentDescription = null
+                    )
                 }
-                Spacer(Modifier.height(16.dp))
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    Row {
-                        BasicTextField(
-                            modifier = Modifier
-                                .width(50.dp)
-                                .height(30.dp),
-                            value = hour,
-                            onValueChange = { hour = it },
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .clickable { alarm = if (alarm == 2) 0 else 2 }
+                        .size(50.dp)
+                        .background(
+                            if (alarm == 2) Color.Black else Color.White,
+                            RoundedCornerShape(50.dp)
                         )
-                        Spacer(Modifier.width(8.dp))
-                        Text("hours")
-                    }
-                    Spacer(Modifier.width(16.dp))
-                    Row {
-                        BasicTextField(
-                            modifier = Modifier
-                                .width(50.dp)
-                                .height(30.dp),
-                            value = minute,
-                            onValueChange = { minute = it },
+                        .border(
+                            color = if (alarm == 2) Color.Black else Color.Gray,
+                            width = 1.dp,
+                            shape = RoundedCornerShape(50.dp)
                         )
-                        Spacer(Modifier.width(8.dp))
-                        Text("hours")
-                    }
+                        .clip(CircleShape)
+                ) {
+                    Icon(
+                        modifier = Modifier.size(25.dp),
+                        tint = if (alarm == 2) Color.White else Color.Gray,
+                        painter = painterResource(R.drawable.water_drop_fill0_wght400_grad0_opsz24),
+                        contentDescription = null
+                    )
                 }
-                Spacer(Modifier.height(16.dp))
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .clickable { alarm = if (alarm == 3) 0 else 3 }
+                        .size(50.dp)
+                        .background(
+                            if (alarm == 3) Color.Black else Color.White,
+                            RoundedCornerShape(50.dp)
+                        )
+                        .border(
+                            color = if (alarm == 3) Color.Black else Color.Gray,
+                            width = 1.dp,
+                            shape = RoundedCornerShape(50.dp)
+                        )
+                        .clip(CircleShape)
+                ) {
+                    Icon(
+                        modifier = Modifier
+                            .size(25.dp)
+                            .offset(x = 5.dp),
+                        tint = if (alarm == 3) Color.White else Color.Gray,
+                        painter = painterResource(R.drawable.etc_svgrepo_com),
+                        contentDescription = null
+                    )
+                }
+            }
+            Spacer(Modifier.height(16.dp))
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                 Row {
-                    Box(
+                    BasicTextField(
                         modifier = Modifier
-                            .border(
-                                width = 1.dp,
-                                color = Color.Black,
-                                RoundedCornerShape(5.dp)
-                            )
-                            .background(
-                                color = Color.White,
-                                RoundedCornerShape(5.dp)
-                            )
-                            .clickable { toggleIsOpen(false) }
-                            .padding(8.dp)
-                            .weight(1f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            "Cancel",
-                            color = Color.Black
-                        )
-                    }
-                    Spacer(Modifier.width(16.dp))
-                    Box(
+                            .width(50.dp)
+                            .height(30.dp),
+                        value = hour,
+                        onValueChange = { hour = it },
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text("hours")
+                }
+                Spacer(Modifier.width(16.dp))
+                Row {
+                    BasicTextField(
                         modifier = Modifier
-                            .border(
-                                width = 1.dp,
-                                color = Color.Black,
-                                RoundedCornerShape(5.dp)
-                            )
-                            .background(
-                                color = Color.Black,
-                                RoundedCornerShape(5.dp)
-                            )
-                            .clickable { onSaveClick() }
-                            .padding(8.dp)
-                            .weight(1f),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            "Save",
-                            color = Color.White
+                            .width(50.dp)
+                            .height(30.dp),
+                        value = minute,
+                        onValueChange = { minute = it },
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text("hours")
+                }
+            }
+            Spacer(Modifier.height(16.dp))
+            Row {
+                Box(
+                    modifier = Modifier
+                        .border(
+                            width = 1.dp,
+                            color = Color.Black,
+                            RoundedCornerShape(5.dp)
                         )
-                    }
-
+                        .background(
+                            color = Color.White,
+                            RoundedCornerShape(5.dp)
+                        )
+                        .clickable { toggleIsOpen(false) }
+                        .padding(8.dp)
+                        .weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        "Cancel",
+                        color = Color.Black
+                    )
+                }
+                Spacer(Modifier.width(16.dp))
+                Box(
+                    modifier = Modifier
+                        .border(
+                            width = 1.dp,
+                            color = Color.Black,
+                            RoundedCornerShape(5.dp)
+                        )
+                        .background(
+                            color = Color.Black,
+                            RoundedCornerShape(5.dp)
+                        )
+                        .clickable { onSaveClick() }
+                        .padding(8.dp)
+                        .weight(1f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        "Save",
+                        color = Color.White
+                    )
+                }
             }
         }
     }
